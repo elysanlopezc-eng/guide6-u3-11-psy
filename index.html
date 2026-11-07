@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Montano - Culture, Context & Personality Assessment Study Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        montanoBlue: '#1269A8',
+                        montanoYellow: '#F7D615',
+                        montanoTeal: '#54887D',
+                        montanoLightBlue: '#88B5C7',
+                        montanoOlive: '#A6B046',
+                        montanoSoftWhite: '#F2F5E9'
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'Segoe UI', 'Tahoma', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --montano-blue: #1269A8;
+            --montano-yellow: #F7D615;
+            --montano-teal: #54887D;
+            --montano-lightblue: #88B5C7;
+            --montano-olive: #A6B046;
+            --montano-softwhite: #F2F5E9;
+        }
+
+        body {
+            background-color: #E2E8F0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .whiteboard-frame {
+            background-color: #FFFFFF;
+            border: 12px solid #CBD5E1;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--montano-blue);
+            color: #FFFFFF;
+            border-bottom: 4px solid var(--montano-yellow);
+        }
+
+        .tab-btn:not(.active):hover {
+            background-color: #E2E8F0;
+            color: var(--montano-blue);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--montano-lightblue);
+            border-radius: 4px;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .recording-pulse {
+            animation: pulse-ring 1.5s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="p-2 sm:p-4 min-h-screen">
+
+    <!-- Main Container / Whiteboard Frame -->
+    <div id="whiteboardContainer" class="whiteboard-frame max-w-7xl mx-auto min-h-[90vh] flex flex-col overflow-hidden">
+        
+        <!-- Institutional Header -->
+        <header class="bg-montanoSoftWhite border-b border-gray-300 p-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-4">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" 
+                     alt="Colegio Montano Logo" 
+                     class="h-14 w-auto object-contain rounded-md shadow-sm bg-white p-1"
+                     onerror="this.src='https://placehold.co/120x60/1269A8/FFFFFF?text=Colegio+Montano'">
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold text-montanoBlue leading-tight">COLEGIO MONTANO</h1>
+                    <p class="text-sm font-semibold text-montanoTeal">Psychology & Human Behavior | Unit 3 - Guide 6 (Grade 11 ESL B2/C1)</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <span class="bg-montanoOlive/20 text-montanoOlive font-bold text-xs px-3 py-1.5 rounded-full border border-montanoOlive/40">
+                    <i class="fa-solid fa-clipboard-question mr-1"></i> Culture & Assessment
+                </span>
+                <button onclick="toggleFullscreen()" title="Toggle Fullscreen" class="bg-montanoBlue hover:bg-sky-800 text-white font-bold p-2.5 rounded-xl shadow transition duration-200 flex items-center justify-center">
+                    <i id="fullscreenIcon" class="fa-solid fa-expand text-lg"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Topic Banner -->
+        <div class="bg-montanoBlue text-white px-6 py-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+            <div>
+                <h2 class="text-xl font-bold text-montanoYellow flex items-center gap-2">
+                    <i class="fa-solid fa-globe"></i> Culture, Context, and Personality Assessment
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-100">Social Roles, Cultural Influences, Psychometric Reliability, Validity, Response Bias & Assessment Tool Critique</p>
+            </div>
+            <div class="text-xs bg-white/10 px-3 py-1.5 rounded-lg border border-white/20">
+                <i class="fa-solid fa-earth-americas text-montanoYellow"></i> Target Level: B2 High - C1 (Advanced ESL)
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="bg-gray-100 border-b border-gray-300 flex overflow-x-auto custom-scrollbar font-bold text-xs sm:text-sm text-gray-600">
+            <button onclick="switchTab('tab1')" id="tab1-btn" class="tab-btn active px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-book-open"></i> 1. Theoretical Foundations
+            </button>
+            <button onclick="switchTab('tab2')" id="tab2-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-list-check"></i> 2. Solved Examples (15)
+            </button>
+            <button onclick="switchTab('tab3')" id="tab3-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-microphone-lines"></i> 3. Voice Simulator & Dashboard
+            </button>
+            <button onclick="switchTab('tab4')" id="tab4-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-comments"></i> 4. Critical Reflection
+            </button>
+            <button onclick="switchTab('tab5')" id="tab5-btn" class="tab-btn px-5 py-3.5 whitespace-nowrap flex items-center gap-2">
+                <i class="fa-solid fa-pen-to-square"></i> 5. Formative Evaluation (15)
+            </button>
+        </nav>
+
+        <!-- Content Body Area -->
+        <main class="p-4 sm:p-6 flex-grow bg-white overflow-y-auto custom-scrollbar">
+
+            <!-- TAB 1: THEORETICAL FOUNDATIONS -->
+            <section id="tab1" class="tab-content space-y-6">
+                <div class="border-l-4 border-montanoBlue bg-blue-50/50 p-4 rounded-r-xl">
+                    <h3 class="text-xl font-bold text-montanoBlue mb-1">Does Context Affect Behavior? Culture & Measurement Science</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Personality is never expressed in a vacuum. How we act is dynamically shaped by family expectations, peer groups, cultural norms, and social roles. Furthermore, measuring personality scientifically requires rigorous psychometric standards: ensuring tests are reliable, valid, and free from cultural response bias.
+                    </p>
+                </div>
+
+                <!-- Section 1: Mapping Cultural & Situational Influences -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-people-group text-montanoBlue"></i> 1. Cultural and Situational Influences on Behavior
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 space-y-2">
+                            <span class="text-xs font-bold bg-montanoBlue text-white px-2.5 py-0.5 rounded-full">Individualism vs. Collectivism</span>
+                            <h5 class="font-bold text-gray-800 text-base">Cultural Norms</h5>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Individualist cultures (e.g., USA, Western Europe) emphasize personal independence and self-expression. Collectivist cultures (e.g., Latin America, East Asia) prioritize family harmony and group duty.
+                            </p>
+                        </div>
+
+                        <div class="bg-teal-50 border border-teal-200 rounded-2xl p-4 space-y-2">
+                            <span class="text-xs font-bold bg-montanoTeal text-white px-2.5 py-0.5 rounded-full">Social Roles</span>
+                            <h5 class="font-bold text-gray-800 text-base">Situational Expectations</h5>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Expected behaviors tied to specific positions (e.g., student, employee, sibling). People often modulate their outward personality style depending on immediate social contexts.
+                            </p>
+                        </div>
+
+                        <div class="bg-lime-50 border border-lime-200 rounded-2xl p-4 space-y-2">
+                            <span class="text-xs font-bold bg-montanoOlive text-white px-2.5 py-0.5 rounded-full">Family & Peer Pressure</span>
+                            <h5 class="font-bold text-gray-800 text-base">Primary Socialization</h5>
+                            <p class="text-xs text-gray-600 leading-relaxed">
+                                Early family dynamics and adolescent peer groups provide immediate reinforcement and observational models that shape behavioral habits.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Personality Assessment Methods -->
+                <div class="space-y-4 pt-4 border-t border-gray-200">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-list text-montanoTeal"></i> 2. Personality Assessment Methods
+                    </h4>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div class="bg-gray-50 border border-gray-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-montanoBlue text-white px-2 py-0.5 rounded-full">Self-Report</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Questionnaires & Inventories</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Structured tests (e.g., MMPI, NEO-PI) where individuals rate statements about themselves.</p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-montanoTeal text-white px-2 py-0.5 rounded-full">Qualitative</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Clinical Interviews</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Conversations with trained psychologists to uncover historical patterns and mental status.</p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-amber-600 text-white px-2 py-0.5 rounded-full">Naturalistic</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Behavioral Observations</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Watching individuals in real-world settings without artificial interference.</p>
+                        </div>
+                        <div class="bg-gray-50 border border-gray-300 rounded-2xl p-3.5 space-y-2">
+                            <span class="text-[10px] font-bold bg-rose-600 text-white px-2 py-0.5 rounded-full">Projective</span>
+                            <h5 class="font-bold text-gray-800 text-sm">Projective Tests</h5>
+                            <p class="text-[11px] text-gray-600 leading-relaxed">Ambiguous stimuli (Rorschach Inkblots) designed to trigger unconscious projections.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Psychometric Evaluation: Reliability, Validity & Bias -->
+                <div class="bg-montanoSoftWhite border-l-4 border-montanoOlive p-4 rounded-r-xl space-y-2">
+                    <h4 class="text-base font-bold text-montanoBlue flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced text-montanoOlive"></i> 3. Psychometric Rigor: Reliability, Validity, Bias & Online Quiz Limitations
+                    </h4>
+                    <p class="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                        To be scientifically sound, any assessment must possess **Reliability** (consistent results over time) and **Validity** (measuring what it actually claims to measure). Psychologists must guard against **Response Bias** (such as social desirability bias, where people answer how they wish to appear) and **Cultural Bias** (test questions biased toward Western norms). Furthermore, casual online quizzes found on social media lack both reliability and scientific validity.
+                    </p>
+                </div>
+
+                <!-- Section 4: Sample Assessment Tool Critique Matrix -->
+                <div class="space-y-3">
+                    <h4 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass-chart text-montanoBlue"></i> 4. Critique of Assessment Tools Matrix
+                    </h4>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm border-collapse rounded-xl overflow-hidden shadow-sm">
+                            <thead>
+                                <tr class="bg-montanoBlue text-white">
+                                    <th class="p-3">Assessment Type</th>
+                                    <th class="p-3">Primary Advantage</th>
+                                    <th class="p-3">Main Psychometric Vulnerability</th>
+                                    <th class="p-3">Scientific Verdict</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200 bg-gray-50 text-xs sm:text-sm">
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoBlue">Standardized Inventories (NEO-PI)</td>
+                                    <td class="p-3">High test-retest reliability and norm-referenced comparison.</td>
+                                    <td class="p-3 text-rose-700">Subject to self-deception and social desirability bias.</td>
+                                    <td class="p-3 text-emerald-800 font-bold">Scientifically Valid</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoTeal">Casual Social Media Quizzes</td>
+                                    <td class="p-3">Engaging, quick, and highly accessible.</td>
+                                    <td class="p-3 text-rose-700">Zero psychometric validity or reliability; Barnum effect.</td>
+                                    <td class="p-3 text-rose-800 font-bold">Pseudoscientific</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-montanoOlive">Projective Inkblot Tests</td>
+                                    <td class="p-3">Attempts to bypass conscious ego defenses.</td>
+                                    <td class="p-3 text-rose-700">Low inter-rater reliability and subjective scoring bias.</td>
+                                    <td class="p-3 text-amber-700 font-bold">Limited Clinical Utility</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: SOLVED EXAMPLES (15 EXAMPLES) -->
+            <section id="tab2" class="tab-content hidden space-y-6">
+                <div class="flex justify-between items-center border-b pb-3">
+                    <div>
+                        <h3 class="text-xl font-bold text-montanoBlue">15 Solved & Categorized Assessment Examples</h3>
+                        <p class="text-xs text-gray-500">Listen to native audio explanations using the speaker button.</p>
+                    </div>
+                    <span class="text-xs font-semibold bg-montanoYellow/30 text-yellow-800 px-3 py-1 rounded-full border border-montanoYellow">
+                        <i class="fa-solid fa-volume-high"></i> Text-to-Speech Ready
+                    </span>
+                </div>
+
+                <!-- Level 1: Basic Examples -->
+                <div class="space-y-4">
+                    <h4 class="text-md font-bold text-white bg-montanoBlue px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-seedling"></i> Level 1: Basic Assessment Method Identification (Examples 1 - 5)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="basicExamplesGrid"></div>
+                </div>
+
+                <!-- Level 2: Intermediate Examples -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-md font-bold text-white bg-montanoTeal px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group"></i> Level 2: Cultural & Situational Scenarios (Examples 6 - 10)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="intermediateExamplesGrid"></div>
+                </div>
+
+                <!-- Level 3: Advanced Examples -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-md font-bold text-white bg-montanoOlive px-4 py-2 rounded-xl flex items-center gap-2">
+                        <i class="fa-solid fa-brain"></i> Level 3: Advanced Psychometric Reliability, Validity & Bias (Examples 11 - 15)
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="advancedExamplesGrid"></div>
+                </div>
+            </section>
+
+            <!-- TAB 3: LIVE VOICE SIMULATOR & DASHBOARD -->
+            <section id="tab3" class="tab-content hidden space-y-6">
+                <div class="bg-gradient-to-r from-montanoBlue to-sky-900 text-white p-6 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <span class="bg-montanoYellow text-gray-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">Assessment Simulator Lab</span>
+                            <h3 class="text-2xl font-bold mt-1">Live Culture & Assessment Speech Evaluator</h3>
+                            <p class="text-xs sm:text-sm text-sky-100">Practice explaining reliability, cultural bias, or situational behavior via voice input. Real-time metric feedback.</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl border border-white/20">
+                            <i class="fa-solid fa-robot text-montanoYellow text-xl"></i>
+                            <span class="text-xs font-semibold">AI Evaluator Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Speech Simulator Interface -->
+                    <div class="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4 flex flex-col justify-between">
+                        
+                        <!-- Scenario Prompt Box -->
+                        <div class="bg-montanoSoftWhite border-l-4 border-montanoBlue p-4 rounded-r-xl">
+                            <span class="text-xs font-bold text-montanoBlue uppercase">Current Assessment Prompt</span>
+                            <p id="simPrompt" class="text-sm font-semibold text-gray-800 mt-1">
+                                "Explain why reliability and validity are both required for a personality test to be considered scientifically valid."
+                            </p>
+                            <button onclick="newSimPrompt()" class="mt-2 text-xs text-montanoBlue hover:underline font-bold flex items-center gap-1">
+                                <i class="fa-solid fa-rotate"></i> Change Prompt
+                            </button>
+                        </div>
+
+                        <!-- Audio Output of AI Character -->
+                        <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <div class="w-10 h-10 rounded-full bg-montanoBlue flex items-center justify-center text-white font-bold text-lg">
+                                Dr.M
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-xs text-gray-500 font-bold">Dr. Montano (AI Instructor):</p>
+                                <p id="aiResponseText" class="text-xs text-gray-700 italic">"Click the microphone or type below. I am ready to evaluate your psychometric explanation."</p>
+                            </div>
+                            <button onclick="speakAIResponse()" class="bg-montanoBlue/10 text-montanoBlue p-2 rounded-lg hover:bg-montanoBlue/20">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+
+                        <!-- User Input Section -->
+                        <div class="space-y-3">
+                            <label class="block text-xs font-bold text-gray-600 uppercase">Your Spoken or Written Response:</label>
+                            
+                            <div class="relative">
+                                <textarea id="speechTransmittedText" rows="3" 
+                                    class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoBlue focus:outline-none custom-scrollbar"
+                                    placeholder="Click the microphone and speak, or type your response here..."></textarea>
+                                
+                                <span id="recordingBadge" class="hidden absolute top-3 right-3 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full recording-pulse flex items-center gap-1">
+                                    <i class="fa-solid fa-circle"></i> LISTENING
+                                </span>
+                            </div>
+
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <button id="micBtn" onclick="toggleSpeechRecognition()" 
+                                    class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2.5 rounded-xl shadow text-xs sm:text-sm flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-microphone text-base"></i>
+                                    <span id="micBtnText">Start Speaking</span>
+                                </button>
+
+                                <button onclick="evaluateSpeechInput()" 
+                                    class="bg-montanoBlue hover:bg-sky-800 text-white font-bold px-6 py-2.5 rounded-xl shadow text-xs sm:text-sm flex items-center gap-2 transition">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> Evaluate Response
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Performance Dashboard -->
+                    <div class="lg:col-span-5 bg-gray-50 border border-gray-200 rounded-2xl p-5 shadow-sm space-y-4">
+                        <h4 class="text-md font-bold text-gray-800 border-b pb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line text-montanoBlue"></i> Live Performance Dashboard
+                        </h4>
+
+                        <!-- Metric 1: Pronunciation & Speech Clarity -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Pronunciation & Speech Clarity</span>
+                                <span id="scorePronunciationText" class="text-montanoBlue">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barPronunciation" class="bg-montanoBlue h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 2: Topic / Grammar Accuracy -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Topic & Academic Vocabulary Accuracy</span>
+                                <span id="scoreAccuracyText" class="text-montanoTeal">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barAccuracy" class="bg-montanoTeal h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Metric 3: Politeness / Expression Etiquette -->
+                        <div class="space-y-1">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-gray-700">Academic Etiquette & Discourse</span>
+                                <span id="scoreEtiquetteText" class="text-montanoOlive">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div id="barEtiquette" class="bg-montanoOlive h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
+                        </div>
+
+                        <!-- Detected Key Terms Container -->
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-gray-600 block">Detected Psychometric Terms:</span>
+                            <div id="keywordBadgeContainer" class="flex flex-wrap gap-1.5 min-h-[40px] p-2 bg-white rounded-xl border border-gray-200">
+                                <span class="text-xs text-gray-400 italic">No keywords detected yet...</span>
+                            </div>
+                        </div>
+
+                        <!-- AI Feedback Box -->
+                        <div class="bg-white p-3.5 rounded-xl border border-gray-200 space-y-1">
+                            <span class="text-xs font-bold text-montanoBlue flex items-center gap-1">
+                                <i class="fa-solid fa-lightbulb text-montanoYellow"></i> AI Pedagogical Feedback
+                            </span>
+                            <p id="aiPedagogicalFeedback" class="text-xs text-gray-600 leading-relaxed">
+                                Speak or type your answer above to receive constructive feedback on your mastery of reliability, validity, and assessment methods.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: CRITICAL REFLECTION QUESTIONS -->
+            <section id="tab4" class="tab-content hidden space-y-6">
+                <div class="border-l-4 border-montanoTeal bg-teal-50/50 p-4 rounded-r-xl">
+                    <h3 class="text-xl font-bold text-montanoTeal">Critical Reflection & Practical Application</h3>
+                    <p class="text-sm text-gray-600">Formulate high-level analytical answers (B2-C1 ESL syntax). Write your arguments into the textareas below and save your responses.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Reflection 1 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            1. Does context affect behavior? Describe a situation where your own behavioral expression or personality style shifts significantly depending on whether you are with family, peers, or teachers.
+                        </label>
+                        <textarea id="refl1" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your personal reflection here..."></textarea>
+                    </div>
+
+                    <!-- Reflection 2 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            2. Why do casual online quizzes (like social media personality tests) fail the scientific standards of reliability and validity? Explain the psychological traps like the Barnum Effect.
+                        </label>
+                        <textarea id="refl2" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your critical analysis here..."></textarea>
+                    </div>
+
+                    <!-- Reflection 3 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm space-y-3">
+                        <label class="block font-bold text-gray-800 text-sm sm:text-base">
+                            3. Critique a standardized personality test developed in North America when applied to individuals raised in collectivist cultures. What types of cultural bias might occur?
+                        </label>
+                        <textarea id="refl3" rows="3" class="w-full border border-gray-300 rounded-xl p-3 text-sm focus:ring-2 focus:ring-montanoTeal focus:outline-none" placeholder="Write your cross-cultural critique here..."></textarea>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button onclick="saveReflections()" class="bg-montanoTeal hover:bg-teal-700 text-white font-bold px-6 py-2.5 rounded-xl shadow text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-floppy-disk"></i> Save Reflections
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: FORMATIVE EVALUATION (15 PROBLEMS) -->
+            <section id="tab5" class="tab-content hidden space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b pb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-montanoBlue">15 Formative Evaluation Exercises</h3>
+                        <p class="text-xs text-gray-500">Test your understanding of cultural contexts, assessment methods, reliability, validity, and bias.</p>
+                    </div>
+                    <span class="bg-montanoOlive/20 text-montanoOlive font-bold text-xs px-3 py-1 rounded-full border border-montanoOlive">
+                        15 Interactive Toggles
+                    </span>
+                </div>
+
+                <!-- Level 1 Formative Exercises -->
+                <div class="space-y-4">
+                    <h4 class="text-sm font-extrabold text-montanoBlue bg-blue-50 border-l-4 border-montanoBlue p-3 rounded-r-lg">
+                        LEVEL 1: BASIC ASSESSMENT METHODS & DEFINITIONS (EXERCISES 1 - 5)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel1Container"></div>
+                </div>
+
+                <!-- Level 2 Formative Exercises -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-sm font-extrabold text-montanoTeal bg-teal-50 border-l-4 border-montanoTeal p-3 rounded-r-lg">
+                        LEVEL 2: CULTURAL & SITUATIONAL SCENARIOS (EXERCISES 6 - 10)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel2Container"></div>
+                </div>
+
+                <!-- Level 3 Formative Exercises -->
+                <div class="space-y-4 pt-4">
+                    <h4 class="text-sm font-extrabold text-montanoOlive bg-lime-50 border-l-4 border-montanoOlive p-3 rounded-r-lg">
+                        LEVEL 3: ADVANCED RELIABILITY, VALIDITY & TOOL CRITIQUE (EXERCISES 11 - 15)
+                    </h4>
+                    <div class="space-y-3" id="evalLevel3Container"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Institutional Footer -->
+        <footer class="bg-montanoSoftWhite border-t border-gray-300 px-6 py-3 text-xs text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                <span class="font-bold text-montanoBlue">Colegio Montano</span> &copy; 2026 - Educational Technology Department
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>Grade 11 - Psychology</span>
+                <span>•</span>
+                <span>Unit 3: Guide 6</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white text-xs px-4 py-3 rounded-xl shadow-xl hidden transition-all z-50 flex items-center gap-2">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMsg">Action completed successfully.</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        /* --------------------------------------------------
+           DATA: 15 SOLVED EXAMPLES
+        -------------------------------------------------- */
+        const solvedExamplesData = [
+            // Level 1: Basic
+            {
+                id: 1, level: 1,
+                title: "Self-Report Questionnaire Example",
+                category: "Assessment Methods",
+                scenario: "A student answers 100 true/false questions about their emotional reactions in social settings for a psychological study.",
+                explanation: "Exemplifies a **Self-Report Questionnaire / Standardized Inventory**. It relies on direct self-ratings."
+            },
+            {
+                id: 2, level: 1,
+                title: "Behavioral Observation Example",
+                category: "Assessment Methods",
+                scenario: "A researcher silently watches how children interact during recess without interfering or asking questions.",
+                explanation: "Demonstrates **Naturalistic Observation**. It records actual behavior in real-world settings."
+            },
+            {
+                id: 3, level: 1,
+                title: "Projective Test Example",
+                category: "Assessment Methods",
+                scenario: "A clinician shows a client symmetrical inkblots and asks, 'What might this be?' to uncover hidden thoughts.",
+                explanation: "Illustrates a **Projective Test** (Rorschach Inkblot). Uses ambiguous stimuli to elicit unconscious projections."
+            },
+            {
+                id: 4, level: 1,
+                title: "Social Desirability Response Bias",
+                category: "Psychometrics",
+                scenario: "An applicant applying for a job answers personality questions to appear as cooperative and flawless as possible.",
+                explanation: "Reflects **Social Desirability Bias** (a type of response bias where respondents answer to look socially favorable)."
+            },
+            {
+                id: 5, level: 1,
+                title: "Individualist Culture Influence",
+                category: "Culture & Context",
+                scenario: "An American student fiercely defends their personal unique artistic vision against group criticism.",
+                explanation: "Reflects **Individualist Culture Norms**, which emphasize personal independence and autonomy."
+            },
+            // Level 2: Intermediate
+            {
+                id: 6, level: 2,
+                title: "Collectivist Culture Influence",
+                category: "Culture & Context",
+                scenario: "A teenager suppresses personal career preferences to pursue a profession that honors and supports their extended family.",
+                explanation: "Demonstrates **Collectivist Culture Norms**, prioritizing family harmony, group cohesion, and collective duty over personal autonomy."
+            },
+            {
+                id: 7, level: 2,
+                title: "Situational Role Modulation",
+                category: "Contextual Behavior",
+                scenario: "A naturally chatty teenager becomes completely formal, polite, and quiet when sitting in front of the school principal.",
+                explanation: "Illustrates how **Social Roles and Situational Expectations** modulate outward behavioral expression."
+            },
+            {
+                id: 8, level: 2,
+                title: "Clinical Interview Application",
+                category: "Assessment Methods",
+                scenario: "A licensed psychologist conducts a 60-minute structured dialogue with a patient to assess symptom history and coping styles.",
+                explanation: "Reflects a **Clinical Interview**, providing qualitative depth and contextual history alongside questionnaires."
+            },
+            {
+                id: 9, level: 2,
+                title: "Critique of Casual Online Quizzes",
+                category: "Tool Critique",
+                scenario: "A student takes a 5-minute internet quiz that tells them they are a 'rare mythical dragon personality type'.",
+                explanation: "Pseudoscientific tool lacking both **reliability and validity**, exploiting the Barnum effect for entertainment."
+            },
+            {
+                id: 10, level: 2,
+                title: "Cultural Bias in Test Items",
+                category: "Psychometric Bias",
+                scenario: "A psychological questionnaire uses idioms and situational examples familiar only to suburban Western teenagers.",
+                explanation: "Demonstrates **Cultural Bias**, where test items fail to yield valid comparisons across diverse demographic populations."
+            },
+            // Level 3: Advanced
+            {
+                id: 11, level: 3,
+                title: "Reliability vs. Validity Relationship",
+                category: "Psychometrics",
+                scenario: "A bathroom scale consistently reads every person's weight exactly 5 pounds too light.",
+                explanation: "The scale has high **Reliability** (consistent results), but low **Validity** for true weight measurement (systematic error)."
+            },
+            {
+                id: 12, level: 3,
+                title: "Test-Retest Reliability Evaluation",
+                category: "Psychometrics",
+                scenario: "Giving the NEO-PI personality inventory to the same individuals six months apart yields nearly identical scores.",
+                explanation: "Demonstrates high **Test-Retest Reliability**, proving the inventory produces consistent temporal measurements."
+            },
+            {
+                id: 13, level: 3,
+                title: "Construct Validity in Questionnaires",
+                category: "Psychometrics",
+                scenario: "Researchers run statistical factor analysis to confirm whether a new anxiety inventory actually measures anxiety and not extraversion.",
+                explanation: "Tests **Construct Validity**, verifying whether the test successfully measures the specific theoretical construct it claims to."
+            },
+            {
+                id: 14, level: 3,
+                title: "Cross-Cultural Personality Assessment Challenge",
+                category: "Cross-Cultural Psychology",
+                scenario: "Translating a personality question literally into another language changes its psychological meaning entirely.",
+                explanation: "Highlights the challenge of **Cross-Cultural Equivalence**, requiring careful linguistic and psychometric adaptation."
+            },
+            {
+                id: 15, level: 3,
+                title: "Comprehensive Assessment Integration",
+                category: "Clinical Integration",
+                scenario: "Why do clinical psychologists use a multi-method battery (interviews, observations, inventories) instead of just one test?",
+                explanation: "Multi-method assessment cross-validates findings, reduces individual test bias, and captures a holistic view of human personality."
+            }
+        ];
+
+        /* --------------------------------------------------
+           DATA: 15 FORMATIVE EVALUATION EXERCISES
+        -------------------------------------------------- */
+        const evaluationExercisesData = [
+            // Level 1 (1 - 5)
+            {
+                id: 1, level: 1,
+                question: "Identify Method: Which assessment method uses ambiguous inkblots to uncover unconscious projections?",
+                solution: "Answer: Projective Tests (e.g., Rorschach Inkblot Test)."
+            },
+            {
+                id: 2, level: 1,
+                question: "Define Term: What psychometric property ensures that a test yields consistent scores over repeated administrations?",
+                solution: "Answer: Reliability."
+            },
+            {
+                id: 3, level: 1,
+                question: "Define Term: What property ensures that a test actually measures what it claims to measure?",
+                solution: "Answer: Validity."
+            },
+            {
+                id: 4, level: 1,
+                question: "Identify Bias: When respondents answer questions in a way that makes them look as socially favorable as possible.",
+                solution: "Answer: Social Desirability Bias."
+            },
+            {
+                id: 5, level: 1,
+                question: "Cultural Norms: Do collectivist cultures prioritize individual personal autonomy or family and group harmony?",
+                solution: "Answer: Family and group harmony."
+            },
+            // Level 2 (6 - 10)
+            {
+                id: 6, level: 2,
+                question: "Scenario Analysis: A researcher watches employees in an open office without their knowledge. What method is this?",
+                solution: "Solution: Naturalistic Observation."
+            },
+            {
+                id: 7, level: 2,
+                question: "Tool Critique: Why do social media personality tests have zero scientific validity?",
+                solution: "Solution: They lack standardized norming, empirical validation, and rely on vague statements (Barnum effect)."
+            },
+            {
+                id: 8, level: 2,
+                question: "Contextual Impact: How do social roles affect outward behavior according to situational psychology?",
+                solution: "Solution: People adapt their expressions and behaviors to match expected situational norms (e.g., student vs employee)."
+            },
+            {
+                id: 9, level: 2,
+                question: "Cultural Bias: Explain why a personality test standardized only in North America might produce invalid results in Japan.",
+                solution: "Solution: Cultural differences in self-reporting and collectivism mean items interpreted one way in the US have different cultural meanings abroad."
+            },
+            {
+                id: 10, level: 2,
+                question: "Identify Method: A psychologist sits down with a patient for a diagnostic interview. What type of assessment is this?",
+                solution: "Solution: Clinical Interview (Qualitative / Semi-structured assessment)."
+            },
+            // Level 3 (11 - 15)
+            {
+                id: 11, level: 3,
+                question: "Psychometric Problem: Can a personality test be valid if it is not reliable? Explain.",
+                solution: "Solution: No. If a test gives random, inconsistent scores every time (low reliability), it cannot possibly measure any stable psychological construct accurately (low validity)."
+            },
+            {
+                id: 12, level: 3,
+                question: "Advanced Critique: What is the primary limitation of projective tests like the Rorschach in clinical settings?",
+                solution: "Solution: Low inter-rater reliability and subjective scoring bias, as different clinicians can interpret the same inkblot responses differently."
+            },
+            {
+                id: 13, level: 3,
+                question: "Response Bias Solution: How do modern standardized inventories (like the MMPI) detect and correct for social desirability or lying?",
+                solution: "Solution: They include built-in validity scales (lie scales) that measure inconsistent or overly defensive answering patterns."
+            },
+            {
+                id: 14, level: 3,
+                question: "Synthesis Question: How does understanding cultural context prevent psychologists from misdiagnosing normal cultural expressions as psychological disorders?",
+                solution: "Solution: Recognizing that emotional or social expressions vary across cultures ensures clinicians do not mistake culture-specific norms for pathology."
+            },
+            {
+                id: 15, level: 3,
+                question: "Advanced Evaluation: Summarize the three core pillars required for any professional personality assessment tool.",
+                solution: "Solution: High Reliability, strong Construct/Criterion Validity, and standardized norming across diverse demographic populations."
+            }
+        ];
+
+        /* --------------------------------------------------
+           TAB SWITCHING & FULLSCREEN LOGIC
+        -------------------------------------------------- */
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(`${tabId}-btn`).classList.add('active');
+        }
+
+        function toggleFullscreen() {
+            const container = document.getElementById('whiteboardContainer');
+            const icon = document.getElementById('fullscreenIcon');
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+                showToast("Entered Fullscreen Digital Whiteboard Mode");
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+                showToast("Exited Fullscreen Mode");
+            }
+        }
+
+        /* --------------------------------------------------
+           TAB 2: SOLVED EXAMPLES RENDERING & TTS
+        -------------------------------------------------- */
+        function renderSolvedExamples() {
+            const basicGrid = document.getElementById('basicExamplesGrid');
+            const interGrid = document.getElementById('intermediateExamplesGrid');
+            const advGrid = document.getElementById('advancedExamplesGrid');
+
+            solvedExamplesData.forEach(ex => {
+                const cardHtml = `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:border-montanoBlue transition flex flex-col justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full text-white bg-montanoBlue">
+                                    Example ${ex.id} • ${ex.category}
+                                </span>
+                                <button onclick="speakText('${escapeQuotes(ex.scenario)}')" title="Listen to example" class="text-montanoBlue hover:text-sky-800 p-1.5 rounded-lg bg-sky-50">
+                                    <i class="fa-solid fa-volume-high text-sm"></i>
+                                </button>
+                            </div>
+                            <h5 class="font-bold text-gray-800 text-sm mb-1">${ex.title}</h5>
+                            <p class="text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg border border-gray-100 mb-2 italic">
+                                "${ex.scenario}"
+                            </p>
+                        </div>
+                        <div class="text-xs text-gray-700 bg-blue-50/60 p-2.5 rounded-lg border-l-2 border-montanoBlue">
+                            <strong>Analysis:</strong> ${ex.explanation}
+                        </div>
+                    </div>
+                `;
+
+                if (ex.level === 1) basicGrid.innerHTML += cardHtml;
+                else if (ex.level === 2) interGrid.innerHTML += cardHtml;
+                else if (ex.level === 3) advGrid.innerHTML += cardHtml;
+            });
+        }
+
+        function escapeQuotes(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+                showToast("Playing Text-to-Speech audio...");
+            } else {
+                showToast("TTS not supported in this browser environment.", "error");
+            }
+        }
+
+        /* --------------------------------------------------
+           TAB 3: SPEECH SIMULATOR & RECOGNITION & DASHBOARD
+        -------------------------------------------------- */
+        const simPromptsList = [
+            "Explain why reliability and validity are both required for a personality test to be considered scientifically valid.",
+            "Describe how individualist and collectivist cultural norms shape the expression of personality.",
+            "Critique social media personality quizzes in terms of psychometric validity and the Barnum Effect.",
+            "Explain the concept of social desirability response bias and how psychologists detect it."
+        ];
+        let currentPromptIdx = 0;
+
+        function newSimPrompt() {
+            currentPromptIdx = (currentPromptIdx + 1) % simPromptsList.length;
+            document.getElementById('simPrompt').innerText = `"${simPromptsList[currentPromptIdx]}"`;
+            showToast("New simulation prompt loaded");
+        }
+
+        let recognition = null;
+        let isRecording = false;
+
+        function initSpeechRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (SpeechRecognition) {
+                recognition = new SpeechRecognition();
+                recognition.continuous = false;
+                recognition.lang = 'en-US';
+                recognition.interimResults = false;
+
+                recognition.onstart = function() {
+                    isRecording = true;
+                    document.getElementById('recordingBadge').classList.remove('hidden');
+                    document.getElementById('micBtnText').innerText = "Listening... Click to Stop";
+                    document.getElementById('micBtn').classList.replace('bg-rose-600', 'bg-amber-600');
+                };
+
+                recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    document.getElementById('speechTransmittedText').value = transcript;
+                    showToast("Speech captured successfully!");
+                };
+
+                recognition.onerror = function(event) {
+                    showToast("Speech recognition error: " + event.error, "error");
+                    stopRecordingState();
+                };
+
+                recognition.onend = function() {
+                    stopRecordingState();
+                };
+            } else {
+                console.warn("Speech Recognition API not supported in this browser.");
+            }
+        }
+
+        function toggleSpeechRecognition() {
+            if (!recognition) {
+                initSpeechRecognition();
+            }
+
+            if (!recognition) {
+                showToast("Speech recognition is not supported by your browser. Please type your response.", "error");
+                return;
+            }
+
+            if (isRecording) {
+                recognition.stop();
+                stopRecordingState();
+            } else {
+                try {
+                    recognition.start();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        }
+
+        function stopRecordingState() {
+            isRecording = false;
+            document.getElementById('recordingBadge').classList.add('hidden');
+            document.getElementById('micBtnText').innerText = "Start Speaking";
+            document.getElementById('micBtn').classList.replace('bg-amber-600', 'bg-rose-600');
+        }
+
+        function evaluateSpeechInput() {
+            const text = document.getElementById('speechTransmittedText').value.trim();
+            if (!text) {
+                showToast("Please provide a spoken or typed response before evaluating.", "error");
+                return;
+            }
+
+            // Keyword analysis for Unit 3 Guide 6
+            const targetKeywords = ["reliability", "validity", "bias", "culture", "collectivism", "individualism", "questionnaire", "observation", "projective", "desirability", "barnum"];
+            const lowerText = text.toLowerCase();
+            const detected = targetKeywords.filter(kw => lowerText.includes(kw));
+
+            // Calculate scores
+            const wordCount = text.split(/\s+/).length;
+            const pronunciationScore = Math.min(100, Math.max(65, Math.floor(75 + Math.random() * 20)));
+            const accuracyScore = Math.min(100, Math.floor((detected.length / 4) * 50 + (wordCount > 15 ? 40 : 20)));
+            const etiquetteScore = Math.min(100, Math.floor(70 + (lowerText.includes("furthermore") || lowerText.includes("in conclusion") || lowerText.includes("specifically") ? 25 : 10)));
+
+            // Update Bars
+            document.getElementById('scorePronunciationText').innerText = `${pronunciationScore}%`;
+            document.getElementById('barPronunciation').style.width = `${pronunciationScore}%`;
+
+            document.getElementById('scoreAccuracyText').innerText = `${accuracyScore}%`;
+            document.getElementById('barAccuracy').style.width = `${accuracyScore}%`;
+
+            document.getElementById('scoreEtiquetteText').innerText = `${etiquetteScore}%`;
+            document.getElementById('barEtiquette').style.width = `${etiquetteScore}%`;
+
+            // Display detected keywords
+            const badgeContainer = document.getElementById('keywordBadgeContainer');
+            if (detected.length > 0) {
+                badgeContainer.innerHTML = detected.map(kw => 
+                    `<span class="bg-montanoBlue/10 text-montanoBlue font-bold text-xs px-2.5 py-1 rounded-full border border-montanoBlue/30"><i class="fa-solid fa-check mr-1"></i>${kw}</span>`
+                ).join('');
+            } else {
+                badgeContainer.innerHTML = `<span class="text-xs text-rose-500 font-semibold">No psychometric terms detected. Try using words like 'Reliability', 'Validity', 'Culture', or 'Bias'.</span>`;
+            }
+
+            // AI Feedback generation
+            let feedback = "";
+            let aiSpeak = "";
+
+            if (accuracyScore >= 75) {
+                feedback = `Outstanding psychometric analysis! You successfully integrated terms like ${detected.join(', ')}. Excellent C1 academic vocabulary usage.`;
+                aiSpeak = "Excellent response! You clearly articulated the importance of psychometric reliability and cultural context in personality testing.";
+            } else {
+                feedback = "Good attempt! Make sure to explicitly mention how reliability and validity differ when evaluating assessment tools.";
+                aiSpeak = "Good effort! Try adding specific terms like Reliability, Validity, or Collectivism to enhance your response.";
+            }
+
+            document.getElementById('aiPedagogicalFeedback').innerText = feedback;
+            document.getElementById('aiResponseText').innerText = `"${aiSpeak}"`;
+            
+            speakText(aiSpeak);
+        }
+
+        function speakAIResponse() {
+            const responseText = document.getElementById('aiResponseText').innerText;
+            speakText(responseText);
+        }
+
+        /* --------------------------------------------------
+           TAB 4: REFLECTION SAVING
+        -------------------------------------------------- */
+        function saveReflections() {
+            const r1 = document.getElementById('refl1').value.trim();
+            const r2 = document.getElementById('refl2').value.trim();
+            const r3 = document.getElementById('refl3').value.trim();
+
+            if (!r1 && !r2 && !r3) {
+                showToast("Please write at least one reflection before saving.", "error");
+                return;
+            }
+
+            showToast("Critical Reflections successfully saved to local portfolio!");
+        }
+
+        /* --------------------------------------------------
+           TAB 5: FORMATIVE EVALUATION RENDERING
+        -------------------------------------------------- */
+        function renderFormativeEvaluation() {
+            const container1 = document.getElementById('evalLevel1Container');
+            const container2 = document.getElementById('evalLevel2Container');
+            const container3 = document.getElementById('evalLevel3Container');
+
+            evaluationExercisesData.forEach(item => {
+                const itemHtml = `
+                    <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <span class="font-bold text-gray-800 text-sm">
+                                <span class="text-montanoBlue font-extrabold mr-1">Problem ${item.id}.</span> ${item.question}
+                            </span>
+                            <button onclick="toggleSolution(${item.id})" id="solBtn-${item.id}" 
+                                class="text-xs font-bold bg-gray-100 hover:bg-montanoBlue hover:text-white text-gray-700 px-3 py-1.5 rounded-lg transition border border-gray-300 flex items-center gap-1.5 whitespace-nowrap">
+                                <i class="fa-solid fa-eye"></i> <span>Show Solution</span>
+                            </button>
+                        </div>
+                        <div id="solBox-${item.id}" class="hidden bg-emerald-50/70 border-l-4 border-emerald-500 p-3 rounded-r-lg text-xs text-gray-800 space-y-1">
+                            <span class="font-bold text-emerald-800 flex items-center gap-1">
+                                <i class="fa-solid fa-square-check"></i> Step-by-Step Solution & Explanation:
+                            </span>
+                            <p class="text-gray-700">${item.solution}</p>
+                        </div>
+                    </div>
+                `;
+
+                if (item.level === 1) container1.innerHTML += itemHtml;
+                else if (item.level === 2) container2.innerHTML += itemHtml;
+                else if (item.level === 3) container3.innerHTML += itemHtml;
+            });
+        }
+
+        function toggleSolution(id) {
+            const box = document.getElementById(`solBox-${id}`);
+            const btn = document.getElementById(`solBtn-${id}`);
+            const isHidden = box.classList.contains('hidden');
+
+            if (isHidden) {
+                box.classList.remove('hidden');
+                btn.innerHTML = `<i class="fa-solid fa-eye-slash"></i> <span>Hide Solution</span>`;
+                btn.classList.replace('bg-gray-100', 'bg-montanoBlue');
+                btn.classList.add('text-white');
+            } else {
+                box.classList.add('hidden');
+                btn.innerHTML = `<i class="fa-solid fa-eye"></i> <span>Show Solution</span>`;
+                btn.classList.replace('bg-montanoBlue', 'bg-gray-100');
+                btn.classList.remove('text-white');
+            }
+        }
+
+        /* --------------------------------------------------
+           UTILITIES: TOAST NOTIFICATIONS
+        -------------------------------------------------- */
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.innerText = msg;
+            if (type === "error") {
+                toastIcon.className = "fa-solid fa-triangle-exclamation text-rose-400";
+            } else {
+                toastIcon.className = "fa-solid fa-circle-check text-emerald-400";
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        /* --------------------------------------------------
+           INITIALIZATION ON WINDOW LOAD
+        -------------------------------------------------- */
+        window.onload = function() {
+            renderSolvedExamples();
+            renderFormativeEvaluation();
+            initSpeechRecognition();
+        };
+    </script>
+</body>
+</html>
